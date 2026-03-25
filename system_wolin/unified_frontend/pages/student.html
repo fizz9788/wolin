@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生管理 - 教务管理系统</title>
+    <link rel="stylesheet" href="/unified_frontend/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 页面头部 -->
+        <header class="page-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="window.location.href='/unified_frontend/'">← 返回</button>
+                <h1>👨‍🎓 学生管理</h1>
+            </div>
+            <div class="header-right">
+                <button class="btn btn-primary" onclick="showAddStudentModal()">添加学生</button>
+            </div>
+        </header>
+
+        <!-- 搜索栏 -->
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="搜索学生姓名或学号..." onkeyup="searchStudents()">
+            <select id="academicFilter" onchange="filterStudents()">
+                <option value="">全部学历</option>
+                <option value="本科">本科</option>
+                <option value="专科">专科</option>
+                <option value="研究生">研究生</option>
+                <option value="博士">博士</option>
+            </select>
+        </div>
+
+        <!-- 统计信息 -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-label">总人数</span>
+                <span class="stat-value" id="totalStudents">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">男</span>
+                <span class="stat-value" id="maleCount">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">女</span>
+                <span class="stat-value" id="femaleCount">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">已就业</span>
+                <span class="stat-value" id="employedCount">0</span>
+            </div>
+        </div>
+
+        <!-- 学生列表表格 -->
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>学号</th>
+                        <th>姓名</th>
+                        <th>年龄</th>
+                        <th>性别</th>
+                        <th>学历</th>
+                        <th>学校</th>
+                        <th>专业</th>
+                        <th>班级</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTableBody">
+                    <!-- 动态加载学生数据 -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 分页 -->
+        <div class="pagination">
+            <button class="page-btn" onclick="prevPage()">上一页</button>
+            <span id="pageInfo">第 1 页</span>
+            <button class="page-btn" onclick="nextPage()">下一页</button>
+        </div>
+
+        <!-- 添加/编辑学生模态框 -->
+        <div id="studentModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle">添加学生</h2>
+                    <span class="close" onclick="closeModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="studentForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentId">学号：</label>
+                                <input type="number" id="studentId" name="id" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentName">姓名：</label>
+                                <input type="text" id="studentName" name="name" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentAge">年龄：</label>
+                                <input type="number" id="studentAge" name="age" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentGender">性别：</label>
+                                <select id="studentGender" name="gender" required>
+                                    <option value="男">男</option>
+                                    <option value="女">女</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentAddress">地址：</label>
+                            <input type="text" id="studentAddress" name="address" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentAcademic">学历：</label>
+                                <select id="studentAcademic" name="academic" required>
+                                    <option value="本科">本科</option>
+                                    <option value="专科">专科</option>
+                                    <option value="研究生">研究生</option>
+                                    <option value="博士">博士</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentClassId">班级ID：</label>
+                                <input type="number" id="studentClassId" name="class_id" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentSchool">学校：</label>
+                                <input type="text" id="studentSchool" name="school" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentMajor">专业：</label>
+                                <input type="text" id="studentMajor" name="major" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="enrollmentTime">入学时间：</label>
+                                <input type="text" id="enrollmentTime" name="enrollment_time" placeholder="例如：2020-09" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="graduationTime">毕业时间：</label>
+                                <input type="text" id="graduationTime" name="graduation_time" placeholder="例如：2024-06" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentCounselorId">辅导员ID：</label>
+                            <input type="number" id="studentCounselorId" name="counselor_id" required>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                            <button type="button" class="btn btn-secondary" onclick="closeModal()">取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 消息提示 -->
+        <div id="messageToast" class="toast"></div>
+    </div>
+
+    <script src="/unified_frontend/static/js/student.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>综合管理系统</title>
+    <link rel="stylesheet" href="/class_frontend/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <h1>🎓 综合管理系统</h1>
+            <p class="subtitle">班级管理 | 多表查询 | 数据分析</p>
+        </header>
+
+        <!-- 导航卡片 -->
+        <div class="nav-cards">
+            <div class="nav-card" onclick="window.location.href='/class_frontend/pages/class.html'">
+                <div class="card-icon">📚</div>
+                <h2>班级管理</h2>
+                <p>管理班级信息、查看班级详情</p>
+                <button class="card-btn">进入管理</button>
+            </div>
+
+            <div class="nav-card" onclick="window.location.href='/class_frontend/pages/query.html'">
+                <div class="card-icon">🔍</div>
+                <h2>多表查询</h2>
+                <p>跨表查询、数据统计分析</p>
+                <button class="card-btn">开始查询</button>
+            </div>
+
+            <div class="nav-card" onclick="alert('成绩管理功能开发中...')">
+                <div class="card-icon">📊</div>
+                <h2>成绩管理</h2>
+                <p>成绩录入、查询与分析</p>
+                <button class="card-btn" disabled>开发中</button>
+            </div>
+        </div>
+
+        <!-- 系统信息 -->
+        <div class="system-info">
+            <h3>系统信息</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">系统版本</span>
+                    <span class="info-value">v1.0.0</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">数据库</span>
+                    <span class="info-value">MySQL</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">后端框架</span>
+                    <span class="info-value">FastAPI</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">状态</span>
+                    <span class="info-value status-active">运行中</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 快捷链接 -->
+        <div class="quick-links">
+            <h3>快捷链接</h3>
+            <div class="link-buttons">
+                <a href="/docs" target="_blank" class="link-btn">API 文档</a>
+                <a href="/frontend" target="_blank" class="link-btn">学生管理</a>
+                <a href="/redoc" target="_blank" class="link-btn">ReDoc</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
