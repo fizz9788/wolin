@@ -47,7 +47,10 @@ env/
 # Logs
 *.log
 logs/
+<<<<<<< HEAD
 log/
+=======
+>>>>>>> 7390b552a56d837bac6bb6601a7a1c71cf80d4bf
 
 # Testing
 .pytest_cache/
@@ -55,6 +58,7 @@ log/
 htmlcov/
 .tox/
 
+<<<<<<< HEAD
 # Test scripts (temporary)
 test_*.py
 
@@ -64,5 +68,7 @@ test_*.py
 *.backup
 *.old
 
+=======
+>>>>>>> 7390b552a56d837bac6bb6601a7a1c71cf80d4bf
 # OS
 Thumbs.db
