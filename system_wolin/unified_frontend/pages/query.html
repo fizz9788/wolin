@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多表查询 - 教务管理系统</title>
+    <link rel="stylesheet" href="/unified_frontend/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 页面头部 -->
+        <header class="page-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="window.location.href='/unified_frontend/'">← 返回</button>
+                <h1>🔍 多表查询</h1>
+            </div>
+        </header>
+
+        <!-- 查询选项卡 -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('classInfo')">班级就业信息</button>
+            <button class="tab-btn" onclick="switchTab('avgSalary')">学历平均工资</button>
+            <button class="tab-btn" onclick="switchTab('salaryRange')">薪资范围查询</button>
+        </div>
+
+        <!-- 班级就业信息查询 -->
+        <div id="classInfo" class="tab-content">
+            <div class="query-section">
+                <h3>📊 班级就业信息查询</h3>
+                <div class="query-form">
+                    <div class="form-row">
+                        <label for="classId">班级ID：</label>
+                        <input type="number" id="queryClassId" placeholder="请输入班级ID">
+                        <button class="btn btn-primary" onclick="queryClassEmployment()">查询</button>
+                    </div>
+                </div>
+                <div class="query-result">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>学号</th>
+                                <th>姓名</th>
+                                <th>班级ID</th>
+                                <th>班主任</th>
+                                <th>任课教师</th>
+                                <th>就业公司</th>
+                                <th>薪资</th>
+                                <th>Offer时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="classEmploymentTableBody">
+                            <tr><td colspan="8" class="no-data">请输入班级ID进行查询</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 学历平均工资查询 -->
+        <div id="avgSalary" class="tab-content" style="display: none;">
+            <div class="query-section">
+                <h3>💰 学历平均工资统计</h3>
+                <div class="query-form">
+                    <button class="btn btn-primary" onclick="queryAvgSalary()">查询平均工资</button>
+                    <button class="btn btn-secondary" onclick="exportData('avgSalary')">导出数据</button>
+                </div>
+                <div class="query-result">
+                    <div class="chart-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>学历</th>
+                                    <th>平均工资</th>
+                                    <th>人数</th>
+                                </tr>
+                            </thead>
+                            <tbody id="avgSalaryTableBody">
+                                <tr><td colspan="3" class="no-data">点击查询按钮获取数据</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 薪资范围查询 -->
+        <div id="salaryRange" class="tab-content" style="display: none;">
+            <div class="query-section">
+                <h3>💵 薪资范围查询</h3>
+                <div class="query-form">
+                    <div class="form-row">
+                        <label for="minSalary">最低薪资：</label>
+                        <input type="number" id="minSalary" placeholder="例如：8000">
+                        <label for="maxSalary">最高薪资：</label>
+                        <input type="number" id="maxSalary" placeholder="例如：20000">
+                        <button class="btn btn-primary" onclick="querySalaryRange()">查询</button>
+                    </div>
+                </div>
+                <div class="query-result">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>学号</th>
+                                <th>姓名</th>
+                                <th>班级</th>
+                                <th>公司名称</th>
+                                <th>薪资</th>
+                                <th>就业开始时间</th>
+                                <th>Offer时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salaryRangeTableBody">
+                            <tr><td colspan="7" class="no-data">请输入薪资范围进行查询</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 消息提示 -->
+        <div id="messageToast" class="toast"></div>
+    </div>
+
+    <script src="/unified_frontend/static/js/query.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据统计 - 教务管理系统</title>
+    <link rel="stylesheet" href="/unified_frontend/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 页面头部 -->
+        <header class="page-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="window.location.href='/unified_frontend/'">← 返回</button>
+                <h1>📈 数据统计</h1>
+            </div>
+            <div class="header-right">
+                <button class="btn btn-secondary" onclick="refreshAll()">刷新数据</button>
+            </div>
+        </header>
+
+        <!-- 统计选项卡 -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('topSalary')">工资前5</button>
+            <button class="tab-btn" onclick="switchTab('empTime')">就业时长</button>
+            <button class="tab-btn" onclick="switchTab('avgEmpTime')">班级平均就业时长</button>
+        </div>
+
+        <!-- 工资前5统计 -->
+        <div id="topSalary" class="tab-content">
+            <div class="statistics-section">
+                <h3>💰 工资前5的学生</h3>
+                <div class="stats-actions">
+                    <button class="btn btn-primary" onclick="loadTopSalary()">加载数据</button>
+                    <button class="btn btn-secondary" onclick="exportData('topSalary')">导出数据</button>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>排名</th>
+                                <th>姓名</th>
+                                <th>班级</th>
+                                <th>公司名称</th>
+                                <th>薪资</th>
+                                <th>Offer时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="topSalaryTableBody">
+                            <tr><td colspan="6" class="no-data">点击加载数据按钮</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 就业时长统计 -->
+        <div id="empTime" class="tab-content" style="display: none;">
+            <div class="statistics-section">
+                <h3>⏱️ 每个学生的就业时长</h3>
+                <div class="stats-actions">
+                    <button class="btn btn-primary" onclick="loadEmpTime()">加载数据</button>
+                    <button class="btn btn-secondary" onclick="exportData('empTime')">导出数据</button>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>姓名</th>
+                                <th>就业开始时间</th>
+                                <th>Offer时间</th>
+                                <th>就业时长（天）</th>
+                            </tr>
+                        </thead>
+                        <tbody id="empTimeTableBody">
+                            <tr><td colspan="4" class="no-data">点击加载数据按钮</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 班级平均就业时长 -->
+        <div id="avgEmpTime" class="tab-content" style="display: none;">
+            <div class="statistics-section">
+                <h3>📊 每个班级的平均就业时长</h3>
+                <div class="stats-actions">
+                    <button class="btn btn-primary" onclick="loadAvgEmpTime()">加载数据</button>
+                    <button class="btn btn-secondary" onclick="exportData('avgEmpTime')">导出数据</button>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>班级</th>
+                                <th>平均就业时长（天）</th>
+                            </tr>
+                        </thead>
+                        <tbody id="avgEmpTimeTableBody">
+                            <tr><td colspan="2" class="no-data">点击加载数据按钮</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- 消息提示 -->
+        <div id="messageToast" class="toast"></div>
+    </div>
+
+    <script src="/unified_frontend/static/js/statistics.js"></script>
+</body>
+</html>
