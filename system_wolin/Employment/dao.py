@@ -1,13 +1,13 @@
 from datetime import date
 from decimal import Decimal
-from models import Student
+from system_wolin.models import Student
 from sqlalchemy import and_, desc
 from sqlalchemy.orm import Session
 from sqlalchemy.sql.functions import  func
 
-from models import Employment
-from pdc_models import Emp_pdc_model
-from response import HttpResponse
+from system_wolin.models import Employment
+from system_wolin.pdc_models import Emp_pdc_model
+from system_wolin.response import HttpResponse
 
 def get_stu_empinfo_sno(id:int, db:Session):
     return db.query(Employment).filter(Employment.student_id==id).first()

@@ -89,3 +89,12 @@ def register_unified_frontend_routes(app: FastAPI):
         """
         page_path = os.path.join(pages_dir, 'statistics.html')
         return FileResponse(page_path)
+    
+    # AI智能查询页面路由
+    @app.get("/unified_frontend/pages/text2sql.html", tags=["前端"])
+    async def text2sql_page():
+        """
+        AI智能查询页面
+        """
+        page_path = os.path.join(pages_dir, 'text2sql.html')
+        return FileResponse(page_path)

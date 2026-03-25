@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends,HTTPException
-from database_info import get_db
-from response import HttpResponse
+from system_wolin.database_info import get_db
+from system_wolin.response import HttpResponse
 from sqlalchemy.orm import Session
-from models import ClassInfo
-from pdc_models import Classinfo_pdc_model
+from system_wolin.models import ClassInfo
+from system_wolin.pdc_models import Classinfo_pdc_model
 
 class_app=APIRouter()
 

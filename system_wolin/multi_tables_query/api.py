@@ -4,11 +4,11 @@ from openai import OpenAI
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import func
 from sqlalchemy.orm import Session
-from database_info import get_db
-from response import HttpResponse
-from models import ClassInfo
-from models import Student
-from models import Employment
+from system_wolin.database_info import get_db
+from system_wolin.response import HttpResponse
+from system_wolin.models import ClassInfo
+from system_wolin.models import Student
+from system_wolin.models import Employment
 from dotenv import load_dotenv
 
 multi_tables_query_app=APIRouter()
