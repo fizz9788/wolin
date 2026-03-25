@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教务管理系统</title>
+    <link rel="stylesheet" href="/unified_frontend/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部导航 -->
+        <header class="main-header">
+            <div class="header-content">
+                <h1 class="main-title">🎓 教务管理系统</h1>
+                <p class="subtitle">学生管理 | 班级管理 | 就业管理 | 数据分析</p>
+            </div>
+        </header>
+
+        <!-- 功能模块卡片 -->
+        <div class="modules-grid">
+            <div class="module-card" onclick="window.location.href='/unified_frontend/pages/student.html'">
+                <div class="card-icon">👨‍🎓</div>
+                <h2>学生管理</h2>
+                <p class="card-desc">学生信息录入、编辑、查询</p>
+                <ul class="feature-list">
+                    <li>✓ 学生信息管理</li>
+                    <li>✓ 薪资查询</li>
+                    <li>✓ 信息统计</li>
+                </ul>
+                <button class="card-btn">进入管理</button>
+            </div>
+
+            <div class="module-card" onclick="window.location.href='/unified_frontend/pages/class.html'">
+                <div class="card-icon">📚</div>
+                <h2>班级管理</h2>
+                <p class="card-desc">班级信息维护、查看详情</p>
+                <ul class="feature-list">
+                    <li>✓ 班级信息管理</li>
+                    <li>✓ 班主任管理</li>
+                    <li>✓ 班级统计</li>
+                </ul>
+                <button class="card-btn">进入管理</button>
+            </div>
+
+            <div class="module-card" onclick="window.location.href='/unified_frontend/pages/employment.html'">
+                <div class="card-icon">💼</div>
+                <h2>就业管理</h2>
+                <p class="card-desc">学生就业信息、薪资分析</p>
+                <ul class="feature-list">
+                    <li>✓ 就业信息管理</li>
+                    <li>✓ 薪资范围查询</li>
+                    <li>✓ 就业统计</li>
+                </ul>
+                <button class="card-btn">进入管理</button>
+            </div>
+
+            <div class="module-card" onclick="window.location.href='/unified_frontend/pages/query.html'">
+                <div class="card-icon">🔍</div>
+                <h2>多表查询</h2>
+                <p class="card-desc">跨表查询、数据统计分析</p>
+                <ul class="feature-list">
+                    <li>✓ 班级就业信息</li>
+                    <li>✓ 学历工资分析</li>
+                    <li>✓ 综合数据统计</li>
+                </ul>
+                <button class="card-btn">开始查询</button>
+            </div>
+
+            <div class="module-card" onclick="window.location.href='/unified_frontend/pages/text2sql.html'">
+                <div class="card-icon">🤖</div>
+                <h2>AI 智能查询</h2>
+                <p class="card-desc">自然语言查询、多轮对话</p>
+                <ul class="feature-list">
+                    <li>✓ 自然语言转 SQL</li>
+                    <li>✓ 多轮对话支持</li>
+                    <li>✓ 查询历史记录</li>
+                </ul>
+                <button class="card-btn">开始对话</button>
+            </div>
+
+            <div class="module-card" onclick="window.location.href='/unified_frontend/pages/grade.html'">
+                <div class="card-icon">📊</div>
+                <h2>成绩管理</h2>
+                <p class="card-desc">成绩录入、查询与分析</p>
+                <ul class="feature-list">
+                    <li>📝 成绩录入</li>
+                    <li>📈 成绩查询</li>
+                    <li>📊 统计分析</li>
+                </ul>
+                <button class="card-btn disabled" disabled>开发中</button>
+            </div>
+
+            <div class="module-card" onclick="window.location.href='/unified_frontend/pages/statistics.html'">
+                <div class="card-icon">📈</div>
+                <h2>数据统计</h2>
+                <p class="card-desc">数据可视化、报表分析</p>
+                <ul class="feature-list">
+                    <li>✓ 工资前5统计</li>
+                    <li>✓ 就业时长分析</li>
+                    <li>✓ 班级平均就业时长</li>
+                </ul>
+                <button class="card-btn">查看统计</button>
+            </div>
+        </div>
+
+        <!-- 系统信息 -->
+        <div class="system-info">
+            <h3>📌 系统信息</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">系统版本</span>
+                    <span class="info-value">v1.0.0</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">数据库</span>
+                    <span class="info-value">MySQL</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">后端框架</span>
+                    <span class="info-value">FastAPI</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">运行状态</span>
+                    <span class="info-value status-active">● 运行中</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">API文档</span>
+                    <a href="/docs" class="info-link" target="_blank">查看文档</a>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">ReDoc</span>
+                    <a href="/redoc" class="info-link" target="_blank">查看文档</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 快捷操作 -->
+        <div class="quick-actions">
+            <h3>🚀 快捷操作</h3>
+            <div class="action-buttons">
+                <button class="action-btn" onclick="window.location.href='/docs'">📖 API文档</button>
+                <button class="action-btn" onclick="window.location.href='/redoc'">📚 ReDoc</button>
+                <button class="action-btn" onclick="window.open('/docs', '_blank')">🆕 新窗口打开</button>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>&copy; 2024 教务管理系统 | 基于 FastAPI + MySQL</p>
+        </footer>
+
+        <!-- 消息提示 -->
+        <div id="messageToast" class="toast"></div>
+    </div>
+
+    <script src="/unified_frontend/static/js/index.js"></script>
+</body>
+</html>
